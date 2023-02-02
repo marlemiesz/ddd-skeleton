@@ -1,0 +1,21 @@
+{
+  "name": "marlemiesz/ddd",
+  "description": "Library provides a set of tools and abstractions that make it easier to develop and maintain PHP applications following the principles of DDD.",
+  "keywords": [
+    "DDD",
+    "php",
+    "skeleton"
+  ],
+  "authors": [{
+    "name": "Marcin Lemiesz",
+    "email": "mar.lemiesz@gmail.com"
+  }],
+  "require": {
+    "php": "^8.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Marlemiesz\\DDD\\": "src/"
+    }
+  }
+}
