@@ -11,7 +11,9 @@
     "email": "mar.lemiesz@gmail.com"
   }],
   "require": {
-    "php": "^8.2"
+    "php": "^8.2",
+    "symfony/messenger": "^6.2",
+    "lambdish/phunctional": "^2.1"
   },
   "autoload": {
     "psr-4": {
