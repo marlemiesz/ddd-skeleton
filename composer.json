@@ -13,7 +13,8 @@
   "require": {
     "php": "^8.2",
     "symfony/messenger": "^6.2",
-    "lambdish/phunctional": "^2.1"
+    "lambdish/phunctional": "^2.1",
+    "ramsey/uuid": "^4.7"
   },
   "autoload": {
     "psr-4": {
