@@ -10,7 +10,8 @@ use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 use Marlemiesz\DDD\Shared\Domain\Bus\Command\Command;
-class InMemorySymfonyCommandBus
+use Marlemiesz\DDD\Shared\Domain\Bus\Command\CommandBus;
+final class InMemorySymfonyCommandBus implements CommandBus
 {
     private readonly MessageBus $bus;
 
