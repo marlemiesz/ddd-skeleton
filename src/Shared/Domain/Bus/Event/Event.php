@@ -4,6 +4,7 @@ namespace Marlemiesz\DDD\Shared\Domain\Bus\Event;
 
 use DateTimeImmutable;
 use Marlemiesz\DDD\Shared\Domain\Utils;
+use Ramsey\Uuid\Uuid;
 
 abstract class Event
 {
@@ -14,7 +15,7 @@ abstract class Event
     
     public function __construct(private readonly string $aggregateId, string $eventId = null, string $occurredOn = null)
     {
-        $this->eventId    = $eventId ?: Uuid::random()->value();
+        $this->eventId    = $eventId ?: Uuid::uuid4()->toString();
         $this->occurredOn = $occurredOn ?: Utils::dateToString(new DateTimeImmutable());
     }
     

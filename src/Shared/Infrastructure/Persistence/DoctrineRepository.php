@@ -2,17 +2,18 @@
 
 namespace Marlemiesz\DDD\Shared\Infrastructure\Persistence;
 
-use Doctrine\ORM\EntityManager;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityRepository;
 use Marlemiesz\DDD\Shared\Domain\Aggregate\Aggregate;
 
 abstract class DoctrineRepository
 {
-    public function __construct(private readonly EntityManager $entityManager)
+    public function __construct(ManagerRegistry $doctrine)
     {
+        $this->entityManager = $doctrine->getManager();
     }
     
-    protected function entityManager(): EntityManager
+    protected function entityManager()
     {
         return $this->entityManager;
     }
