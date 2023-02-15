@@ -15,7 +15,7 @@ final class InMemorySymfonyCommandBus implements CommandBus
 {
     private readonly MessageBus $bus;
 
-    public function __construct(iterable $commandHandlers)
+    public function __construct(iterable $commandHandlers = [])
     {
         $this->bus = new MessageBus(
             [
