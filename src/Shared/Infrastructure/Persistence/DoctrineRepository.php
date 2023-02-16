@@ -24,6 +24,8 @@ abstract class DoctrineRepository
         $this->entityManager()->flush($entity);
     }
     
+    abstract public function getEntity(): Aggregate;
+    
     protected function remove(Aggregate $entity): void
     {
         $this->entityManager()->remove($entity);
