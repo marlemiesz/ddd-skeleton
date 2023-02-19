@@ -6,8 +6,10 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityRepository;
 use Marlemiesz\DDD\Shared\Domain\Aggregate\Aggregate;
 
-abstract class DoctrineRepository
+abstract class DoctrineRepository extends EntityRepository
 {
+    private $entityManager;
+    
     public function __construct(ManagerRegistry $doctrine)
     {
         $this->entityManager = $doctrine->getManager();
