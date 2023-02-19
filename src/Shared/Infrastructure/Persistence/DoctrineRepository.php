@@ -2,28 +2,31 @@
 
 namespace Marlemiesz\DDD\Shared\Infrastructure\Persistence;
 
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Marlemiesz\DDD\Shared\Domain\Aggregate\Aggregate;
 
-abstract class DoctrineRepository extends EntityRepository
+abstract class DoctrineRepository extends ServiceEntityRepository
 {
     private $entityManager;
-    
-    public function __construct(ManagerRegistry $doctrine)
-    {
-        $this->entityManager = $doctrine->getManager();
-    }
+
+   public function __construct(ManagerRegistry $registry, string $entityClass)
+   {
+       parent::__construct($registry, $entityClass);
+   }
     
     protected function entityManager()
     {
-        return $this->entityManager;
+        return $this->getEntityManager();
     }
     
     protected function persist(Aggregate $entity): void
     {
-        $this->entityManager()->persist($entity);
-        $this->entityManager()->flush($entity);
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush($entity);
     }
     
     abstract public function getEntity(): Aggregate;
@@ -34,8 +37,5 @@ abstract class DoctrineRepository extends EntityRepository
         $this->entityManager()->flush($entity);
     }
     
-    protected function repository(string $entityClass): EntityRepository
-    {
-        return $this->entityManager->getRepository($entityClass);
-    }
+   
 }
