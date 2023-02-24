@@ -19,12 +19,12 @@ abstract class Event
         $this->occurredOn = $occurredOn ?: Utils::dateToString(new DateTimeImmutable());
     }
     
-    abstract public static function fromPrimitives(
-        string $aggregateId,
-        array $body,
-        string $eventId,
-        string $occurredOn
-    ): self;
+//    abstract public static function fromPrimitives(
+//        string $aggregateId,
+//        array $body,
+//        string $eventId,
+//        string $occurredOn
+//    ): self;
     
     abstract public static function eventName(): string;
     
